@@ -23,6 +23,7 @@ abstract class DynamicPluginBundle extends AbstractBundle {
         var base = super.findBundle(pathToBundle, loader, control);
         var ideLocale = LangBundle.getLocale();
         if (!ideLocale.equals(Locale.ENGLISH)) {
+            // load your bundle from baseName_<language>.properties, e.g. "baseName_zh.properties"
             var localizedPath = pathToBundle + "_" + ideLocale.getLanguage();
             var localeBundle = super.findBundle(localizedPath, DynamicPluginBundle.class.getClassLoader(), control);
             if (localeBundle != null && !base.equals(localeBundle)) {
