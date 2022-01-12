@@ -29,6 +29,14 @@
                          implementationClass="dev.ja.samples.localization.SampleInspectionLocalized"
                          hasStaticDescription="true"/>
 
+        <!-- A localized intention -->
+        <intentionAction>
+            <className>dev.ja.samples.localization.SampleIntention</className>
+            <descriptionDirectoryName>sampleIntention</descriptionDirectoryName>
+            <bundleName>messages.pluginBundle</bundleName>
+            <categoryKey>sampleIntention.category</categoryKey>
+        </intentionAction>
+
         <!-- Dummy configurable with localized display name.
         You can't use bundle and key if you want localized values.
          -->
