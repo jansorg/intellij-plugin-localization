@@ -39,7 +39,12 @@ public class SampleInspectionLocalized extends LocalInspectionTool {
     }
 
     /**
+     * Loads the HTML description file from `inspectionDescriptions_<language code>.
+     * <p>
+     * For example: <code>inspectionDescriptions_zh/myInspectionId.html</code>
+     * <p>
      * fixme: this is a hack to get a localized inspection description.
+     *   This will only work if you configure hasStaticDescription="true" in plugin.xml
      */
     @Override
     public @Nullable @Nls String getStaticDescription() {

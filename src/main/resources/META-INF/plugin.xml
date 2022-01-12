@@ -9,6 +9,7 @@
     <resource-bundle>messages.pluginBundle</resource-bundle>
 
     <extensions defaultExtensionNs="com.intellij">
+        <!-- This inspection is following the standard rules and thus not fully localized. -->
         <localInspection shortName="sampleInspection"
                          language="XML"
                          enabledByDefault="true"
@@ -19,7 +20,7 @@
                          implementationClass="dev.ja.samples.localization.SampleInspection"/>
 
         <!-- Hacky inspection with localized name, group name, and description.
-             hasStaticDescription is important!
+             hasStaticDescription is required!
          -->
         <localInspection shortName="sampleInspectionLocalized"
                          language="XML"
@@ -50,8 +51,10 @@
             <add-to-group group-id="EditorPopupMenu"/>
             <!--
                 The overridden label is controlled by the "magic" property key "action.dev.ja.sampleAction.MainMenu.text".
+                No localization yet for your plugin in 2021.3
             -->
             <override-text place="MainMenu"/>
+            <!-- Synonyms, but no localization yet for your plugin in 2021.3 -->
             <synonym key="sampleAction.synonym1"/>
         </action>
     </actions>
