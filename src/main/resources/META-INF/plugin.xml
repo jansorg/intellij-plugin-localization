@@ -1,0 +1,58 @@
+<idea-plugin>
+    <id>dev.ja.samples.plugin-localization</id>
+    <vendor>joachim_ansorg</vendor>
+    <name>plugin-dev.com: Plugin Localization</name>
+    <version>1.0.0-SNAPSHOT</version>
+    <description>Sample plugin to demonstrate localization.</description>
+
+    <!-- Defines the default bundle used for this plugin -->
+    <resource-bundle>messages.pluginBundle</resource-bundle>
+
+    <extensions defaultExtensionNs="com.intellij">
+        <localInspection shortName="sampleInspection"
+                         language="XML"
+                         enabledByDefault="true"
+                         bundle="messages.pluginBundle"
+                         groupKey="sampleInspection.group"
+                         key="sampleInspection.name"
+                         level="WEAK WARNING"
+                         implementationClass="dev.ja.samples.localization.SampleInspection"/>
+
+        <!-- Hacky inspection with localized name, group name, and description.
+             hasStaticDescription is important!
+         -->
+        <localInspection shortName="sampleInspectionLocalized"
+                         language="XML"
+                         enabledByDefault="true"
+                         level="WEAK WARNING"
+                         implementationClass="dev.ja.samples.localization.SampleInspectionLocalized"
+                         hasStaticDescription="true"/>
+
+        <!-- Dummy configurable with localized display name.
+        You can't use bundle and key if you want localized values.
+         -->
+        <applicationConfigurable groupId="language" instance="dev.ja.samples.localization.SampleConfigurable"/>
+
+        <!-- DON'T DO THIS AT HOME :)
+        This overrides the global language pack and breaks all translations of your IDE.
+        -->
+        <!-- <languageBundle locale="ZH" id="dev.ja.sampleLang" order="first"/> -->
+    </extensions>
+
+    <actions>
+        <!--
+            The label is controlled by the "magic" property key "action.dev.ja.sampleAction.text".
+        -->
+        <action id="dev.ja.sampleAction"
+                class="dev.ja.samples.localization.SampleAction"
+                icon="AllIcons.Actions.Colors">
+            <add-to-group group-id="ToolsMenu"/>
+            <add-to-group group-id="EditorPopupMenu"/>
+            <!--
+                The overridden label is controlled by the "magic" property key "action.dev.ja.sampleAction.MainMenu.text".
+            -->
+            <override-text place="MainMenu"/>
+            <synonym key="sampleAction.synonym1"/>
+        </action>
+    </actions>
+</idea-plugin>
